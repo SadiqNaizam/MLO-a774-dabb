@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -61,13 +62,18 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+        'prd-accent-yellow': 'hsl(var(--prd-accent-yellow))',
+        'prd-accent-green': 'hsl(var(--prd-accent-green))',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
+				lg: 'var(--radius)', /* var(--radius) is now 0.375rem (rounded-md from PRD) */
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans], /* PRD typography.primaryFont */
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
@@ -92,5 +98,5 @@ export default {
 			}
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate")]
 } satisfies Config;
